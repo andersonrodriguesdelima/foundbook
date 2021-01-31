@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+<h3 class='center-align'>Books</h3>
 
-<table>
+<table class="centered">
   <thead>
     <tr>
       <th>Name</th>
@@ -29,5 +29,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Book', new_book_path %>
+<%= link_to 'New Book', { controller: 'books', action: 'new' },
+    class: 'waves-effect waves-light btn-small blue lighten-2 gray-text',
+    style: 'margin-left: 20px' %>
