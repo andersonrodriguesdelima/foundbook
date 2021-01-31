@@ -1,37 +1,61 @@
-<%= form_with(model: book) do |form| %>
-  <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+<div class='row'>
+  <%= form_with(model: book, class: 'col s12') do |form| %>
+    <% if book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-      <ul>
-        <% book.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% book.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='row'>
+      <div class="input-field col s12">
+        <input id="book_name" name='book[name]' type="text">
+        <label for="book_name">Name</label>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="input-field col s12">
+        <textarea id="book_description" name='book[description]' class="materialize-textarea"></textarea>
+        <label for="book_description">Description</label>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="input-field col s12">
+        <input id="book_image_url" name='book[image_url]' type="text">
+        <label for="book_image_url">Image URL</label>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="input-field col s12">
+        <select id="book_author_id" name='book[author_id]'>
+          <option value="" disabled selected>Choose your option</option>
+          <%= @authors&.each do |author| %>
+            <option value=<%= author.id %>><%= author.name %></option>
+          <% end %>
+        </select>
+        <label>Author</label>
+      </div>
+    </div>
+
+    <div>
+      <%= form.submit class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      <%= link_to 'Back', { controller: 'books', action: 'index' },
+    class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
     </div>
   <% end %>
+</div>
+<script type="text/javascript">
+M.textareaAutoResize($('#book_description'));
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.text_area :image_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author_id %>
-    <%= form.number_field :author_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+$(document).ready(function(){
+  $('select').formSelect();
+});
+</script>
