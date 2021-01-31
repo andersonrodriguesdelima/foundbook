@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class='row'>
+    <div class="input-field col s12">
+      <input id="author_name" name='author[name]' type="text">
+      <label for="author_name">Name</label>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      <%= link_to 'Back', { controller: 'authors', action: 'index' },
+    class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+    </div>
 <% end %>
