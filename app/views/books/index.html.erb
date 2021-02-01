@@ -2,6 +2,11 @@
 
 <h3 class='center-align'>Books</h3>
 
+<%= form_tag(books_path, :method => 'get') do %>
+  <%= text_field_tag :name, params[:name] %>
+  <%= submit_tag "Search",:name => nil  %>
+<% end %>
+
 <table class="centered highlight">
   <thead>
     <tr>
@@ -32,3 +37,13 @@
 <%= link_to 'New Book', { controller: 'books', action: 'new' },
     class: 'waves-effect waves-light btn-small blue lighten-2 gray-text',
     style: 'margin-left: 20px' %>
+
+<script>
+$(".name_or_desc").change(function () {
+  $.ajax({
+    url: "/books",
+    data: { author_id: $(".name_or_desc").val() },
+    type: "GET"
+  });
+});
+</script>
