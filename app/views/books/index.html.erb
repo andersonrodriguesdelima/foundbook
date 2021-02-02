@@ -2,8 +2,8 @@
 
 <h3 class='center-align'>Books</h3>
 
-<%= form_tag(books_path, :method => 'get') do %>
-  <%= text_field_tag :name, params[:name] %>
+<%= form_tag(books_path, method: 'get', remote: true) do %>
+  <%= text_field_tag :name_or_desc, params[:name_or_desc] %>
   <%= submit_tag "Search",:name => nil  %>
 <% end %>
 
@@ -18,18 +18,8 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.name %></td>
-        <td><%= book.description %></td>
-        <td><%= book.image_url %></td>
-        <td><%= book.author_name %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody id='books_table'>
+      <%= render 'books_table', books: @books %>
   </tbody>
 </table>
 
@@ -39,11 +29,4 @@
     style: 'margin-left: 20px' %>
 
 <script>
-$(".name_or_desc").change(function () {
-  $.ajax({
-    url: "/books",
-    data: { author_id: $(".name_or_desc").val() },
-    type: "GET"
-  });
-});
 </script>

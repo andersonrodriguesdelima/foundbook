@@ -4,6 +4,10 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.search(filter_params)
+    respond_to do |format|
+      format.html
+      format.js { render layout: false }
+    end
   end
 
   # GET /books/1 or /books/1.json
@@ -69,6 +73,6 @@ class BooksController < ApplicationController
     end
 
     def filter_params
-      params.slice(:author_id, :name)
+      params.slice(:author_id, :name_or_desc)
     end
 end

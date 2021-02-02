@@ -5,7 +5,8 @@ class Book < ApplicationRecord
 
   belongs_to :author
 
-  scope :by_name, ->(name) { where(arel_table[:name].lower.matches("%#{name.downcase}%")) }
+  scope :by_name_or_desc, ->(name) { where('name LIKE ? OR description LIKE ?',
+                                      "%#{name.downcase}%", "%#{name.downcase}%") }
 
   def author_name
     author.name || '-'

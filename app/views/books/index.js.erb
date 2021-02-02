@@ -1,0 +1,5 @@
+function replaceBooks (innerHTML) {
+  const books = document.getElementById('books_table');
+  books.innerHTML = innerHTML;
+}
+replaceBooks("<%= j render 'books_table', books: @books %>");
