@@ -1,11 +1,13 @@
-<% books.each do |book| %>
-  <tr>
-    <td><%= book.name %></td>
-    <td><%= book.description %></td>
-    <td><%= book.image_url %></td>
-    <td><%= book.author_name %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<div style='margin: 0px 20px 0px 20px; padding: 5px 20px 5px 20px;'>
+  <% books.each do |book| %>
+    <tr>
+      <td><%= book.name %></td>
+      <td><%= book.description %></td>
+      <td><%= book.image_url %></td>
+      <td><%= book.author_name %></td>
+      <td><%= link_to 'Show', book %></td>
+      <td><%= link_to 'Edit', edit_book_path(book) %></td>
+      <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</div>

@@ -3,7 +3,9 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.search(filter_params)
+    @books = Book.search(filter_params, params[:order])
+    @authors = Author.all
+    @orders = Book.orders
     respond_to do |format|
       format.html
       format.js { render layout: false }
@@ -73,6 +75,6 @@ class BooksController < ApplicationController
     end
 
     def filter_params
-      params.slice(:author_id, :name_or_desc)
+      params.slice('author_id', 'name_or_desc')
     end
 end

@@ -13,3 +13,7 @@ import 'materialize-css/dist/js/materialize'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).ready(function(){
+    $('select').formSelect();
+  });

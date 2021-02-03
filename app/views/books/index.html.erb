@@ -1,12 +1,46 @@
 <p id="notice"><%= notice %></p>
-
-<h3 class='center-align'>Books</h3>
-
-<%= form_tag(books_path, method: 'get', remote: true) do %>
-  <%= text_field_tag :name_or_desc, params[:name_or_desc] %>
-  <%= submit_tag "Search",:name => nil  %>
-<% end %>
-
+<h4>Books</h4>
+</br>
+<div class='row z-depth-1' style='margin: 0px 20px 0px 20px; padding: 5px 20px 5px 20px;'>
+  <h5>Filters:</h5>
+  <%= form_tag(books_path, method: 'get', remote: true) do %>
+    <div class='row'>
+      <div class="input-field col s4">
+        <input id="name_or_desc" name='name_or_desc' type="text">
+        <label for="name_or_desc">Name or Description</label>
+      </div>
+      <div class="input-field col s2">
+        <select id="author_id" name='author_id'>
+          <option value="" disabled selected>Choose your option</option>
+          <%= @authors&.each do |author| %>
+            <option value=<%= author.id %>><%= author.name %></option>
+          <% end %>
+        </select>
+        <label for="author_id">Author</label>
+      </div>
+      <div class='input-field col s2'>
+        <select id="order" name='order'>
+          <option value="" disabled selected>Choose your option</option>
+          <%= @orders&.each do |order| %>
+            <%= order.each do |order_param, order_label| %>
+              <option value=<%= order_param %>><%= order_label %></option>
+            <% end %>
+          <% end %>
+        </select>
+        <label for="order">Order</label>
+      </div>
+      <div class='input-field col s2'></div>
+      <div class='input-field col s1'>
+        <%= submit_tag 'Search', class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      </div>
+      <div class='input-field col s1'>
+        <%= link_to 'New Book', { controller: 'books', action: 'new' },
+            class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      </div>
+    </div>
+  <% end %>
+ </div>
+</br>
 <table class="centered highlight">
   <thead>
     <tr>
@@ -22,11 +56,3 @@
       <%= render 'books_table', books: @books %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'New Book', { controller: 'books', action: 'new' },
-    class: 'waves-effect waves-light btn-small blue lighten-2 gray-text',
-    style: 'margin-left: 20px' %>
-
-<script>
-</script>
