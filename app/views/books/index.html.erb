@@ -29,11 +29,11 @@
         </select>
         <label for="order">Order</label>
       </div>
-      <div class='input-field col s2'></div>
+      <div class='input-field col s1'></div>
       <div class='input-field col s1'>
         <%= submit_tag 'Search', class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
       </div>
-      <div class='input-field col s1'>
+      <div class='input-field col s2'>
         <%= link_to 'New Book', { controller: 'books', action: 'new' },
             class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
       </div>
@@ -56,3 +56,6 @@
       <%= render 'books_table', books: @books %>
   </tbody>
 </table>
+<script>
+  $('select').formSelect();
+</script>
