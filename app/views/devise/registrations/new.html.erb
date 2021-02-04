@@ -1,29 +1,32 @@
-<h2>Sign up</h2>
+<h3 class='center-align'>Sign up</h3>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="input-field col s11">
+      <%= f.text_field :name %>
+      <label for="name">Name</label>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="input-field col s11">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <label for="email">Email</label>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="input-field col s11">
+      <%= f.password_field :password, autocomplete: "new-password" %>
+        <label for="password">Password (<%= @minimum_password_length %> characters minimum)</label>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="input-field col s11">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <label for="password_confirmation">Password Confirmation</label>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      <%= link_to 'Login', { controller: 'devise/sessions', action: 'new' },
+      class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+    </div>
+  <% end %>
+</div>
