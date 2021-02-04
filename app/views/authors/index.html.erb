@@ -1,7 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Authors</h1>
-
+<h4>Authors</h4>
+</br>
+<div class='row z-depth-1' style='margin: 0px 20px 0px 20px; padding: 5px 20px 5px 20px;'>
+  <h5>Filters:</h5>
+  <%= form_tag(books_path, method: 'get', remote: true) do %>
+    <div class='row'>
+      <div class="input-field col s5">
+        <input id="name" name='name' type="text">
+        <label for="name">Name</label>
+      </div>
+      <div class='input-field col s1 offset-s4'>
+        <%= submit_tag 'Search', class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      </div>
+      <div class='input-field col s2'>
+        <%= link_to 'New Author', { controller: 'authors', action: 'new' },
+            class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      </div>
+    </div>
+  <% end %>
+ </div>
 <table class='centered responsive-table'>
   <thead>
     <tr>
@@ -21,7 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Author', new_author_path %>

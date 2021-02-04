@@ -1,26 +1,28 @@
-<%= form_with(model: author) do |form| %>
-  <% if author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+<div class="container">
+  <%= form_with(model: author, class: 'col s11') do |form| %>
+    <% if author.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
 
-      <ul>
-        <% author.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% author.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='row'>
+      <div class="input-field col s11">
+        <input id="author_name" name='author[name]' type="text">
+        <label for="author_name">Name</label>
+      </div>
     </div>
+
+      <div>
+        <%= form.submit class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+        <%= link_to 'Back', { controller: 'authors', action: 'index' },
+      class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+      </div>
   <% end %>
-
-  <div class='row'>
-    <div class="input-field col s12">
-      <input id="author_name" name='author[name]' type="text">
-      <label for="author_name">Name</label>
-    </div>
-  </div>
-
-    <div>
-      <%= form.submit class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
-      <%= link_to 'Back', { controller: 'authors', action: 'index' },
-    class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
-    </div>
-<% end %>
+</div>
