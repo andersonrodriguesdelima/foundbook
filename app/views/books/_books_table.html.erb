@@ -5,11 +5,13 @@
       <td><%= book.description %></td>
       <td><%= book.image_url %></td>
       <td><%= book.author_name %></td>
-      <td><%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_book_path(book), 
-        class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Edit' %></td>
-      <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, book,
-        method: :delete, data: { confirm: 'Are you sure?' },
-        class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Delete' %></td>
+      <% if user_signed_in? %>
+        <td><%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_book_path(book), 
+          class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Edit' %></td>
+        <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, book,
+          method: :delete, data: { confirm: 'Are you sure?' },
+          class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Delete' %></td>
+      <% end %>
     </tr>
   <% end %>
 </div>
