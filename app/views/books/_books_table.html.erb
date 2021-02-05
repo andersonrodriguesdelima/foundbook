@@ -5,9 +5,16 @@
       <td><%= book.description %></td>
       <td><%= book.image_url %></td>
       <td><%= book.author_name %></td>
-      <td><%= link_to 'Show', book %></td>
-      <td><%= link_to 'Edit', edit_book_path(book) %></td>
-      <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_book_path(book), 
+        class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Edit' %></td>
+      <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, book,
+        method: :delete, data: { confirm: 'Are you sure?' },
+        class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Delete' %></td>
     </tr>
   <% end %>
 </div>
+<script>
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+</script>
