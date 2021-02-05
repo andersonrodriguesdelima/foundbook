@@ -34,8 +34,10 @@
         <%= submit_tag 'Search', class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
       </div>
       <div class='input-field col s2'>
-        <%= link_to 'New Book', { controller: 'books', action: 'new' },
-            class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+        <% if user_signed_in? %>
+          <%= link_to 'New Book', { controller: 'books', action: 'new' },
+              class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+        <% end %>
       </div>
     </div>
   <% end %>

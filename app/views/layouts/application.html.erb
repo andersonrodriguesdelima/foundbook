@@ -13,10 +13,15 @@
   <body class='grey lighten-5'>
     <nav class='nav-center blue lighten-2 gray-text'>
       <div class="nav-wrapper">
+        <span class="brand-logo left hide-on-med-and-down">Hi <%= username %></span>
         <ul class="center hide-on-med-and-down">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="books.html">Books</a></li>
-          <li><a href="authors.html">Authors</a></li>
+          <li><a href="/">Books</a></li>
+          <% if user_signed_in? %>
+            <li><a href="/authors">Authors</a></li>
+            <li class='right'><a href=<%= destroy_user_session_path %> data-method="delete">Sign out</a></li>
+          <% else %>
+            <li class='right'><a href="/users/sign_in">Login</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
