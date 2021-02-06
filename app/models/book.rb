@@ -10,23 +10,10 @@ class Book < ApplicationRecord
   scope :by_author_id, ->(author_id) { where(author_id: author_id) }
   scope :by_order_name, ->(value) { order("name #{value}") }
 
+  include Researcher
+
   def author_name
     author.name || '-'
-  end
-
-  def self.search(filter_params, order_params)
-    books = self.all
-    unless filter_params.blank?
-      filter_params.each do |filter, value|
-        books = books.send('by_' + filter, value) if value.present?
-      end
-    end
-    unless order_params.blank?
-      param, value = order_params.split('-')
-      books = books.send('by_order_' + param, value) if value.present?
-    end
-
-    return books
   end
 
   def self.orders

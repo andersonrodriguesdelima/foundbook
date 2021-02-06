@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.search(filter_params, params[:order])
+    @books = Book.search(Book, filter_params, params[:order])
     @authors = Author.all
     @orders = Book.orders
     respond_to do |format|
