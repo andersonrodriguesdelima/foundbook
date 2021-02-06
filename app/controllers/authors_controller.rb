@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors or /authors.json
   def index
-    @authors = Author.search(Author, filter_params, params[:order])
+    @authors = Author.search(filter_params, params[:order])
     respond_to do |format|
       format.html
       format.js { render layout: false }

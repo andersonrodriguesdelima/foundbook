@@ -2,8 +2,8 @@ module Researcher
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def search(scope, filter_params, order_params)
-      all_scope = scope.all
+    def search(filter_params, order_params)
+      all_scope = self.all
       unless filter_params.blank?
         filter_params.each do |filter, value|
           all_scope = all_scope.send('by_' + filter, value) if value.present?
