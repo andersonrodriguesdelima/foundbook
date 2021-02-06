@@ -1,0 +1,10 @@
+<% @authors.each do |author| %>
+  <tr>
+    <td><%= author.name %></td>
+    <td><%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_author_path(author), 
+    class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Edit' %></td>
+    <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, author,
+      method: :delete, data: { confirm: 'Are you sure?' },
+      class: "tooltipped", 'data-position' => 'left', 'data-tooltip' => 'Delete' %></td>
+  </tr>
+<% end %>

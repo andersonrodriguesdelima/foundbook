@@ -1,0 +1,5 @@
+function replaceAuthors (innerHTML) {
+  const authors = document.getElementById('authors_table');
+  authors.innerHTML = innerHTML;
+}
+replaceAuthors("<%= j render 'authors_table', authors: @authors %>");

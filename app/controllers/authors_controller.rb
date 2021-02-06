@@ -4,7 +4,11 @@ class AuthorsController < ApplicationController
 
   # GET /authors or /authors.json
   def index
-    @authors = Author.all
+    @authors = Author.search(Author, filter_params, params[:order])
+    respond_to do |format|
+      format.html
+      format.js { render layout: false }
+    end
   end
 
   # GET /authors/1 or /authors/1.json
@@ -66,5 +70,9 @@ class AuthorsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def author_params
       params.require(:author).permit(:name)
+    end
+
+    def filter_params
+      params.slice('name')
     end
 end
