@@ -19,3 +19,4 @@ através de login.
 usuário/senha que deseja do seu banco de dados MySQL
 * Rode `rake db:create`, `rake db:migrate`, `rake db:seeds` para iniciar uma base de dados inicial
 e para geração de um login de administrador. (Login: **admin@admin.com** Senha: **admin123**)
+* Rode o comando `rails s`
