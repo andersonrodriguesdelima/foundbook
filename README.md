@@ -15,7 +15,7 @@ através de login.
 * MySQL (local)
 
 ## Como iniciar
-* MySQL com a usuario root e senha 1234 **OU** modifique o arquivo 'config/database.yml' com
+* MySQL com a usuario root e senha 1234 **OU** modifique o arquivo `config/database.yml` com
 usuario/senha que deseje do seu banco de dados MySQL
 * Rode `rake db:create`, `rake db:migrate`, `rake db:seeds` para iniciar uma base de dados inicial
 e para geração de um login de administrador. (Login: **admin@admin.com** Senha: **admin123**)
