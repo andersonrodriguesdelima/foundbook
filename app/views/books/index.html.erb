@@ -3,7 +3,7 @@
 </br>
 <div class='row z-depth-1' style='margin: 0px 20px 0px 20px; padding: 5px 20px 5px 20px;'>
   <h5>Filters:</h5>
-  <%= form_tag(books_path, method: 'get', remote: true) do %>
+  <%= form_tag(books_path, method: 'get', remote: true, id: 'book_search') do %>
     <div class='row'>
       <div class="input-field col s4">
         <input id="name_or_desc" name='name_or_desc' type="text">
@@ -31,7 +31,7 @@
       </div>
       <div class='input-field col s1'></div>
       <div class='input-field col s1'>
-        <%= submit_tag 'Search', class: 'waves-effect waves-light btn-small blue lighten-2 gray-text' %>
+        <button class='submit waves-effect waves-light btn-small blue lighten-2 gray-text', form='book_search'>search</button>
       </div>
       <div class='input-field col s2'>
         <% if user_signed_in? %>
